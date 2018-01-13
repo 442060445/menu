@@ -1,6 +1,7 @@
 package com.longxingyang.dataobject;
 
 import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
 
 
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import java.util.Date;
 /**
  * Created by a4420 on 17/12/03.
  */
+@DynamicUpdate
 @Entity
 @Data
 public class OrderDetail {

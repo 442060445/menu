@@ -81,6 +81,7 @@ public class ProductServiceIml implements ProductService{
     @Override
     public ProductInfo onSale(String productId) {
         ProductInfo productInfo = repository.findOne(productId);
+        //判断订单状态
         if (productInfo == null) {
             throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
         }
@@ -96,6 +97,7 @@ public class ProductServiceIml implements ProductService{
     @Override
     public ProductInfo offSale(String productId) {
         ProductInfo productInfo = repository.findOne(productId);
+        //判断订单状态
         if (productInfo == null) {
             throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
         }

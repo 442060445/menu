@@ -57,9 +57,20 @@ public class ProductServiceImlTest {
         productInfo.setProductDescription("这是一碗皮皮虾");
         productInfo.setProductIcon("Http://xxxx.jpg");
         productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
-        productInfo.setGategoryType(2);
+        productInfo.setCategoryType(2);
         ProductInfo result = productService.save(productInfo);
         Assert.assertNotNull(result);
     }
 
+    @Test
+    public void onSale() throws Exception{
+        ProductInfo result = productService.onSale("123456");
+        Assert.assertEquals(ProductStatusEnum.UP, result.getProductStatusEnum());
+    }
+
+    @Test
+    public void offSale() throws Exception{
+        ProductInfo result = productService.offSale("123456");
+        Assert.assertEquals(ProductStatusEnum.DOWN, result.getProductStatusEnum());
+    }
 }

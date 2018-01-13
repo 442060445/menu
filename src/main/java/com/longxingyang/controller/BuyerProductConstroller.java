@@ -39,7 +39,7 @@ public class BuyerProductConstroller {
         //2、查询类目（一次性查询）
         List<Integer> categoryTypeList = new ArrayList<>();
         for(ProductInfo productInfo : productInfoList){
-            categoryTypeList.add(productInfo.getGategoryType());
+            categoryTypeList.add(productInfo.getCategoryType());
         }
         List<ProductCategory> productCategoryList = categoryService.findByCategoryTypeIn(categoryTypeList);
 
@@ -52,7 +52,7 @@ public class BuyerProductConstroller {
 
             List<ProductInfoVO> productInfoVOList = new ArrayList<>();
             for(ProductInfo productInfo : productInfoList){
-                if(productInfo.getGategoryType().equals(productCategory.getCategoryType())){
+                if(productInfo.getCategoryType().equals(productCategory.getCategoryType())){
                     ProductInfoVO productInfoVO = new ProductInfoVO();
                     BeanUtils.copyProperties(productInfo, productInfoVO);
                     productInfoVOList.add(productInfoVO);

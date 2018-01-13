@@ -1,19 +1,25 @@
 package com.longxingyang.controller;
 
+import com.longxingyang.dataobject.ProductCategory;
+import com.longxingyang.dataobject.ProductInfo;
 import com.longxingyang.dto.OrderDTO;
 import com.longxingyang.enums.ResultEnum;
 import com.longxingyang.exception.SellException;
+import com.longxingyang.service.CategoryService;
 import com.longxingyang.service.OrderService;
+import com.longxingyang.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,8 +35,8 @@ public class SellerOrderController {
 
     /**
      * 订单列表
-     * @param page 第几页, 从1页开始
-     * @param size 一页有多少条数据
+     * @param page 第几页, 默认从1页开始
+     * @param size 一页有多少条数据，默认10条/页
      * @return
      */
     @GetMapping("/list")
@@ -113,4 +119,5 @@ public class SellerOrderController {
         map.put("url", "/sell/seller/order/list");
         return new ModelAndView("common/success");
     }
+
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.longxingyang.enums.ProductStatusEnum;
 import com.longxingyang.utils.EnumUtil;
 import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
 
 
 import javax.persistence.Entity;
@@ -17,6 +18,7 @@ import java.util.Date;
  */
 @Entity
 @Data
+@DynamicUpdate
 public class ProductInfo {
 
     @Id
@@ -35,13 +37,13 @@ public class ProductInfo {
     private String productIcon;
 
     //商品类目
-    private Integer gategoryType;
+    private Integer categoryType;
 
     //商品描述
     private String productDescription;
 
     //商品状态 0正常1下架
-    private Integer productStatus;
+    private Integer productStatus = ProductStatusEnum.UP.getCode();
 
     private Date createTime;
 

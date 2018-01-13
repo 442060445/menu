@@ -57,7 +57,7 @@
             <#--分页-->
                 <div class="col-md-12 column">
                     <ul class="pagination pull-right">
-                    <#if currentPage lte 1>
+                    <#if currentPage lte 1><#--lte 即 <=-->
                         <li class="disabled"><a href="#">上一页</a></li>
                     <#else>
                         <li><a href="/sell/seller/order/list?page=${currentPage - 1}&size=${size}">上一页</a></li>
@@ -71,7 +71,7 @@
                         </#if>
                     </#list>
 
-                    <#if currentPage gte productInfoPage.getTotalPages()>
+                    <#if currentPage gte productInfoPage.getTotalPages()><#--gte 即 >=-->
                         <li class="disabled"><a href="#">下一页</a></li>
                     <#else>
                         <li><a href="/sell/seller/order/list?page=${currentPage + 1}&size=${size}">下一页</a></li>

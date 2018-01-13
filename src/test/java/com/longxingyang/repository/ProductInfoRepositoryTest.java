@@ -35,7 +35,7 @@ public class ProductInfoRepositoryTest {
         productInfo.setProductDescription("这是一碗皮蛋粥");
         productInfo.setProductIcon("Http://xxxx.jpg");
         productInfo.setProductStatus(0);
-        productInfo.setGategoryType(2);
+        productInfo.setCategoryType(2);
 
         ProductInfo result = repository.save(productInfo);
         Assert.assertNotNull(result);
