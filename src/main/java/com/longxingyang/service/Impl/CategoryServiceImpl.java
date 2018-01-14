@@ -19,7 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
     private ProductCategoryRepository repository;
 
     @Override
-    public ProductCategory findeOne(Integer categoryId) {
+    public ProductCategory findOne(Integer categoryId) {
         return repository.findOne(categoryId);
     }
 
