@@ -2,36 +2,32 @@ package com.longxingyang.dataobject;
 
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
- * Created by a4420 on 18/01/15.
+ * Created by a4420 on 18/01/23.
  */
-@Data
-@Entity
 @DynamicUpdate
-public class UserInfo {
+@Entity
+@Data
+public class Evaluate {
 
     @Id
+    private String evaluateId;
+
     private String userId;
 
     //用户名
     private String username;
 
-    //密码
-    private String password;
+    //评分
+    private String rating;
 
-    //手机
-    private String userPhone;
-
-    //用户openid
-    private String openid;
-
-    //帐号类型
-    private String accountType;
+    //评价内容
+    private String content;
 
     //创建时间
     private Date createTime;

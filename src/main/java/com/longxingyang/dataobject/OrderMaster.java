@@ -24,17 +24,14 @@ public class OrderMaster {
     @Id
     private String orderId;
 
-    //买家名字
-    private String buyerName;
+    //用户名
+    private String username;
 
-    //买家手机号
-    private String buyerPhone;
+    //用户ID
+    private String userId;
 
-    //买家地址
-    private String buyerAddress;
-
-    //买家微信OpenId
-    private String buyerOpenid;
+    //用餐桌号
+    private  String desknum;
 
     //订单总金额
     private BigDecimal orderAmount;

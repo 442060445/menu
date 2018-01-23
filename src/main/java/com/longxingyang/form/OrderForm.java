@@ -16,11 +16,11 @@ public class OrderForm {
     @NotEmpty(message = "手机号必填")
     private String phone;
 
-    @NotEmpty(message = "地址必填")
-    private String address;
+    @NotEmpty(message = "桌号必填")
+    private String desknum;
 
-    @NotEmpty(message = "openid必填")
-    private String openid;
+    @NotEmpty(message = "userId必填")
+    private String userId;
 
     @NotEmpty(message = "购物车不能为空")
     private String items;
