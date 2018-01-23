@@ -24,16 +24,15 @@ public class OrderMasterRepositoryTest {
     @Autowired
     private OrderMasterRepository repository;
 
-    private final String OPENID = "1402020045";
+    private final String USERID = "1402020044";
 
     @Test
     public void saveTest() {
         OrderMaster orderMaster = new OrderMaster();
         orderMaster.setOrderId("201712030001");
-        orderMaster.setBuyerName("单元测试");
-        orderMaster.setBuyerPhone("13012345678");
-        orderMaster.setBuyerAddress("燕七宿舍");
-        orderMaster.setBuyerOpenid(OPENID);
+        orderMaster.setUsername("单元测试");
+        orderMaster.setDesknum("10");
+        orderMaster.setUserId(USERID);
         orderMaster.setOrderAmount(new BigDecimal(19.9));
 
         OrderMaster result = repository.save(orderMaster);
@@ -44,7 +43,7 @@ public class OrderMasterRepositoryTest {
     public void findByBuyerOpenid() throws Exception {
         PageRequest request = new PageRequest(0, 3);
 
-        Page<OrderMaster> result = repository.findByBuyerOpenid(OPENID, request);
+        Page<OrderMaster> result = repository.findByUserId(USERID, request);
 
         System.out.println(result.getTotalElements());
 

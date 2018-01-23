@@ -30,7 +30,7 @@ public class OrderServiceImplTest {
     @Autowired
     private OrderServiceImpl orderService;
 
-    private final String BUYER_OPENID = "00010001";
+    private final String BUYER_ID = "00010001";
 
     private final String ORDER_ID = "1512891559247384258";
 
@@ -38,10 +38,9 @@ public class OrderServiceImplTest {
     public void create() throws Exception {
 
         OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setBuyerName("测试2");
-        orderDTO.setBuyerAddress("北京师范大学珠海分校燕华七栋");
-        orderDTO.setBuyerPhone("13701234567");
-        orderDTO.setBuyerOpenid(BUYER_OPENID);
+        orderDTO.setUsername("测试2");
+        orderDTO.setDesknum("010");
+        orderDTO.setUserId(BUYER_ID);
 
         //购物车
         List<OrderDetail> orderDetailList = new ArrayList<>();
@@ -75,7 +74,7 @@ public class OrderServiceImplTest {
     @Test
     public void findList() throws Exception {
         PageRequest request = new PageRequest(0, 2);
-        Page<OrderDTO> orderDTOPage = orderService.findList(BUYER_OPENID, request);
+        Page<OrderDTO> orderDTOPage = orderService.findList(BUYER_ID, request);
         Assert.assertNotEquals(0, orderDTOPage.getTotalElements());
     }
 

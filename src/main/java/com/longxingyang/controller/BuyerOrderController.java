@@ -63,32 +63,32 @@ public class BuyerOrderController {
 
     //订单列表
     @GetMapping("/list")
-    public ResultVO<List<OrderDTO>> list(@RequestParam("openid") String openid,
+    public ResultVO<List<OrderDTO>> list(@RequestParam("userId") String userId,
                                          @RequestParam(value = "page", defaultValue = "0") Integer page,
                                          @RequestParam(value = "size", defaultValue = "10") Integer size){
-        if (StringUtils.isEmpty(openid)) {
-            log.error("【查询订单列表】openid为空");
+        if (StringUtils.isEmpty(userId)) {
+            log.error("【查询订单列表】userId为空");
             throw new SellException(ResultEnum.PARAM_ERROR);
         }
 
         PageRequest request = new PageRequest(page, size);
-        Page<OrderDTO> orderDTOPage= orderService.findList(openid, request);
+        Page<OrderDTO> orderDTOPage= orderService.findList(userId, request);
         return ResultVOUtils.success(orderDTOPage.getContent());
     }
 
     //订单详情
     @GetMapping("/detail")
-    public ResultVO<OrderDTO> detail(@RequestParam("openid") String openid,
+    public ResultVO<OrderDTO> detail(@RequestParam("userId") String userId,
                                      @RequestParam("orderId") String orderId) {
-        OrderDTO orderDTO = buyerService.findOrderOne(openid, orderId);
+        OrderDTO orderDTO = buyerService.findOrderOne(userId, orderId);
         return ResultVOUtils.success(orderDTO);
     }
 
     //取消订单
     @PostMapping("/cancel")
-    public ResultVO cancel(@RequestParam("openid") String openid,
+    public ResultVO cancel(@RequestParam("userId") String userId,
                            @RequestParam("orderId") String orderId) {
-        buyerService.cancelOrder(openid, orderId);
+        buyerService.cancelOrder(userId, orderId);
         return ResultVOUtils.success();
     }
 

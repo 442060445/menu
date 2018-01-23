@@ -21,13 +21,13 @@ public class BuyerServiceImpl implements BuyerService{
     private OrderService orderService;
 
     @Override
-    public OrderDTO findOrderOne(String openid, String orderId) {
-        return checkOrderOwner(openid, orderId);
+    public OrderDTO findOrderOne(String userId, String orderId) {
+        return checkOrderOwner(userId, orderId);
     }
 
     @Override
-    public OrderDTO cancelOrder(String openid, String orderId) {
-        OrderDTO orderDTO = checkOrderOwner(openid, orderId);
+    public OrderDTO cancelOrder(String userId, String orderId) {
+        OrderDTO orderDTO = checkOrderOwner(userId, orderId);
         if (orderDTO == null){
             log.error("[取消订单]查不到该订单， orderID={}",orderId);
             throw new SellException(ResultEnum.ORDER_NOT_EXIST);
@@ -35,13 +35,13 @@ public class BuyerServiceImpl implements BuyerService{
         return orderService.cancel(orderDTO);
     }
 
-    private OrderDTO checkOrderOwner(String openid, String orderId){
+    private OrderDTO checkOrderOwner(String userId, String orderId){
         OrderDTO orderDTO = orderService.findOne(orderId);
         if (orderDTO == null){
             return null;
         }
-        if (!orderDTO.getBuyerOpenid().equalsIgnoreCase(openid)){
-            log.error("[查询订单]订单的openid不一致，openid={}, orderDTO={}",openid, orderDTO);
+        if (!orderDTO.getUserId().equalsIgnoreCase(userId)){
+            log.error("[查询订单]订单的userId不一致，userId={}, orderDTO={}",userId, orderDTO);
             throw new SellException(ResultEnum.ORDER_OWNER_ERROR);
         }
         return orderDTO;
