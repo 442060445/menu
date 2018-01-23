@@ -17,8 +17,7 @@
                         <tr>
                             <th>订单id</th>
                             <th>姓名</th>
-                            <th>手机号</th>
-                            <th>地址</th>
+                            <th>桌号</th>
                             <th>金额</th>
                             <th>订单状态</th>
                             <th>支付状态</th>
@@ -30,10 +29,9 @@
 
                         <#list orderDTOPage.content as orderDTO>
                         <tr>
-                            <td>${orderDTO.orderId}</td>
-                            <td>${orderDTO.buyerName}</td>
-                            <td>${orderDTO.buyerPhone}</td>
-                            <td>${orderDTO.buyerAddress}</td>
+                            <td>${orderDTO.userId}</td>
+                            <td>${orderDTO.username}</td>
+                            <td>${orderDTO.desknum}</td>
                             <td>${orderDTO.orderAmount}</td>
                             <td>${orderDTO.getOrderStatusEnum().message}</td>
                             <td>${orderDTO.getPayStatusEnum().message}</td>

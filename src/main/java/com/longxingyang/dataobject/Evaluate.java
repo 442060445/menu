@@ -2,9 +2,8 @@ package com.longxingyang.dataobject;
 
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 
 /**
@@ -24,7 +23,7 @@ public class Evaluate {
     private String username;
 
     //评分
-    private String rating;
+    private Integer rating;
 
     //评价内容
     private String content;

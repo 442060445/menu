@@ -28,17 +28,17 @@ public class UserInfoRepositoryTest {
         userInfo.setUsername("admin");
         userInfo.setPassword("admin");
         userInfo.setUserPhone("13798957774");
-        userInfo.setUserId("1402020044");
-        userInfo.setOpenid("987654321");
+        userInfo.setUserId("1402020043");
+        userInfo.setOpenid("987654322");
         userInfo.setAccountType("0");
 
         UserInfo result = repository.save(userInfo);
         Assert.assertNotNull(result);
     }
     @Test
-    public void findByOpenid() throws Exception {
+    public void findByUserId() throws Exception {
         UserInfo result = repository.findByUserId("1402020044");
-        Assert.assertEquals("1402020001", result.getOpenid());
+        Assert.assertEquals("1402020044", result.getUserId());
     }
 
 }

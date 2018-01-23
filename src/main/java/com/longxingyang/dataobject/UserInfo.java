@@ -1,5 +1,6 @@
 package com.longxingyang.dataobject;
 
+import com.longxingyang.enums.AccountStatusEnum;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -29,6 +30,9 @@ public class UserInfo {
 
     //用户openid
     private String openid;
+
+    //帐号状态
+    private Integer accountStatus = AccountStatusEnum.NORMAL.getCode();
 
     //帐号类型
     private String accountType;

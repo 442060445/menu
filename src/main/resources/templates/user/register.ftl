@@ -12,16 +12,20 @@
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-md-12 column">
-                    <form role="form" method="post" action="/sell/seller/category/save">
+                    <form role="form" method="post" action="/sell/save">
                         <div class="form-group">
-                            <label>名字</label>
-                            <input name="categoryName" type="text" class="form-control" value="${(category.categoryName)!''}"/>
+                            <label>用户名</label>
+                            <input name="username" type="text" class="form-control" value="${(userInfoDTO.productName)!''}"/>
                         </div>
                         <div class="form-group">
-                            <label>type</label>
-                            <input name="categoryType" type="number" class="form-control" value="${(category.categoryType)!''}"/>
+                            <label>密码</label>
+                            <input name="password" type="password" class="form-control" value="${(userInfoDTO.productPrice)!''}"/>
                         </div>
-                        <input hidden type="text" name="categoryId" value="${(category.categoryId)!''}">
+                        <div class="form-group">
+                            <label>手机</label>
+                            <input name="userPhone" type="number" class="form-control" value="${(userInfoDTO.userPhone)!''}"/>
+                        </div>
+                        <input hidden type="text" name="productId" value="${(userInfoDTO.userId)!''}">
                         <button type="submit" class="btn btn-default">提交</button>
                     </form>
                 </div>

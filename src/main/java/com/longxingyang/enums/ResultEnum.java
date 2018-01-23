@@ -45,6 +45,12 @@ public enum ResultEnum {
     LOGOUT_SUCCESS(26, "登出成功"),
 
     PRODUCT_UPDATE_SUCCESS(27, "商品状态更新成功"),
+
+    ACCOUNT_STATUS_ERROR(28, "帐号状态异常"),
+
+    ACCOUNT_UPDATE_FAIL(29, "帐号更新失败"),
+
+    ACCOUNT_UPDATE_SUCCESS(30, "帐号更新成功")
     ;
 
     private Integer code;

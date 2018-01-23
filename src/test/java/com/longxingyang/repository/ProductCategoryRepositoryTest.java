@@ -33,9 +33,9 @@ public class ProductCategoryRepositoryTest {
 
     @Test
     //事务回滚
-    @Transactional
+   @Transactional
     public void saveTest(){
-        ProductCategory productCategory = new ProductCategory("男生最爱",4);
+        ProductCategory productCategory = new ProductCategory("热卖",1);
         ProductCategory result = repository.save(productCategory);
         Assert.assertNotNull(result);
     }

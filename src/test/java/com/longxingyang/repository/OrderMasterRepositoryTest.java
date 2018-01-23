@@ -40,7 +40,7 @@ public class OrderMasterRepositoryTest {
     }
 
     @Test
-    public void findByBuyerOpenid() throws Exception {
+    public void findByUserId() throws Exception {
         PageRequest request = new PageRequest(0, 3);
 
         Page<OrderMaster> result = repository.findByUserId(USERID, request);
