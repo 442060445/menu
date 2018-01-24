@@ -9,8 +9,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Data
 public class AdminForm {
-
-    @NotEmpty(message = "ID必填")
+    
     private String userId;
 
     @NotEmpty(message = "姓名必填")

@@ -29,10 +29,6 @@
                             <label>账户类型</label>
                             <input name="accountType" type="text" disabled="disabled" class="form-control" value="${(userInfoDTO.accountType)!''}"/>
                         </div>
-                        <div class="form-group">
-                            <label>创建时间</label>
-                            <a>${(userInfoDTO.createTime)}</a>
-                        </div>
                         <input hidden type="text" name="userId" value="${(userInfoDTO.userId)!''}">
                         <button type="submit" class="btn btn-default">提交</button>
                     </form>

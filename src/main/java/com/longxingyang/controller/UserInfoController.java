@@ -44,6 +44,8 @@ public class UserInfoController {
     @Autowired
     private UserInfoRepository repository;
 
+    private final static String OPENID = "00000000000";
+
     /**
      * 用户列表
      * @param page 第几页, 默认从1页开始
@@ -84,8 +86,8 @@ public class UserInfoController {
     }
 
     /**
-     * 激活帐号
-     * @param userId 用户ID
+     *  激活帐号
+     *  @param userId 用户ID
      *  @return
      */
     @GetMapping("/enable")
@@ -104,22 +106,40 @@ public class UserInfoController {
         return new ModelAndView("common/success", map);
     }
 
+    /**
+     * 新增/修改帐号详情
+     *  @param userId 用户ID
+     *  @map
+     *  @return
+     *
+     */
     @GetMapping("/index")
     public ModelAndView index(@RequestParam(value = "userId", required = false) String userId,
                              Map<String, Object> map){
         if(!StringUtils.isEmpty(userId)){
             UserInfoDTO userInfoDTO = userInfoService.findOne(userId);
             map.put("userInfoDTO", userInfoDTO);
+        }else{
+            UserInfoDTO userInfoDTO = new UserInfoDTO();
+            map.put("userInfoDTO", userInfoDTO);
         }
 
         return new ModelAndView("user/index", map);
     }
 
+    /**
+     * 保存/更新帐号详情
+     * @param form
+     * @param bindingResult
+     * @param map
+     * @return
+     */
     @PostMapping("/save")
     public ModelAndView save(@Valid AdminForm form,
                              BindingResult bindingResult,
                              Map<String, Object> map){
         if(bindingResult.hasErrors()){
+            map.put("userInfoDTO", form);
             map.put("msg", bindingResult.getFieldError().getDefaultMessage());
             map.put("url", "/sell/user/index");
             return new ModelAndView("common/error", map);
@@ -131,6 +151,10 @@ public class UserInfoController {
                 userInfoDTO = userInfoService.findOne(form.getUserId());
             }else {
                 form.setUserId(KeyUtil.genUniqueKey());
+                userInfoDTO.setUserId(form.getUserId());
+                userInfoDTO.setAccountType("1");
+                userInfoDTO.setAccountStatus(0);
+                userInfoDTO.setOpenid(OPENID);
             }
             userInfoDTO.setPassword(form.getPassword());
             userInfoDTO.setUserPhone(form.getUserPhone());

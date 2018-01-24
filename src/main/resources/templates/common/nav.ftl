@@ -39,7 +39,14 @@
         </li>
 
         <li>
-            <a href="/sell/user/list"><i class="fa fa-fw fa-list-alt"></i> 用户管理</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i
+                    class="fa fa-fw fa-plus"></i> 用户管理 <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">操作
+                </li>
+                <li><a href="/sell/user/list">查看所有帐号</a></li>
+                <li><a href="/sell/user/index">新增管理员帐号</a></li>
+            </ul>
         </li>
 
         <li class="dropdown">
