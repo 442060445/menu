@@ -8,7 +8,6 @@ import com.longxingyang.enums.ResultEnum;
 import com.longxingyang.exception.SellException;
 import com.longxingyang.repository.UserInfoRepository;
 import com.longxingyang.service.UserInfoService;
-import com.longxingyang.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +43,7 @@ public class UserInfoServiceImpl implements UserInfoService{
 
     @Override
     public Page<UserInfoDTO> findList(Pageable pageable) {
-        Page<UserInfo> userInfoPage= repository.findAll(pageable);
+        Page<UserInfo> userInfoPage = repository.findAll(pageable);
         List<UserInfoDTO> userInfoDTOList = UserInfo2UserInfoDTOConverter.convert(userInfoPage.getContent());
         return new PageImpl<UserInfoDTO>(userInfoDTOList, pageable, userInfoPage.getTotalElements());
     }

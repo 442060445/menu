@@ -1,8 +1,6 @@
 package com.longxingyang.controller;
 
 import com.longxingyang.converter.UserInfo2UserInfoDTOConverter;
-import com.longxingyang.dataobject.ProductInfo;
-import com.longxingyang.dataobject.UserInfo;
 import com.longxingyang.dto.UserInfoDTO;
 import com.longxingyang.enums.AccountStatusEnum;
 import com.longxingyang.enums.ResultEnum;
@@ -14,7 +12,6 @@ import com.longxingyang.service.UserInfoService;
 import com.longxingyang.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

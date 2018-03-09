@@ -33,8 +33,7 @@
             <ul class="dropdown-menu" role="menu">
                 <li class="dropdown-header">操作
                 </li>
-                <li><a href="#">查看</a></li>
-                <li><a href="#">111</a></li>
+                <li><a href="/sell/evaluate/list">查看</a></li>
             </ul>
         </li>
 
