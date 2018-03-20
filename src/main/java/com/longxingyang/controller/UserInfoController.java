@@ -45,6 +45,7 @@ public class UserInfoController {
 
     /**
      * 用户列表
+     *
      * @param page 第几页, 默认从1页开始
      * @param size 一页有多少条数据，默认10条/页
      * @return
@@ -63,12 +64,13 @@ public class UserInfoController {
 
     /**
      * 禁用帐号
+     *
      * @param userId 用户ID
      * @return
      */
     @GetMapping("/disable")
     public ModelAndView disable(@RequestParam("userId") String userId,
-                                Map<String, Object> map){
+                                Map<String, Object> map) {
         try {
             UserInfoDTO userInfoDTO = UserInfo2UserInfoDTOConverter.convert(repository.findOne(userId));
             userInfoService.disable(userInfoDTO);
@@ -83,13 +85,14 @@ public class UserInfoController {
     }
 
     /**
-     *  激活帐号
-     *  @param userId 用户ID
-     *  @return
+     * 激活帐号
+     *
+     * @param userId 用户ID
+     * @return
      */
     @GetMapping("/enable")
     public ModelAndView enable(@RequestParam("userId") String userId,
-                                Map<String, Object> map){
+                               Map<String, Object> map) {
         try {
             UserInfoDTO userInfoDTO = UserInfo2UserInfoDTOConverter.convert(repository.findOne(userId));
             userInfoService.enable(userInfoDTO);
@@ -105,18 +108,18 @@ public class UserInfoController {
 
     /**
      * 新增/修改帐号详情
-     *  @param userId 用户ID
-     *  @map
-     *  @return
      *
+     * @param userId 用户ID
+     * @return
+     * @map
      */
     @GetMapping("/index")
     public ModelAndView index(@RequestParam(value = "userId", required = false) String userId,
-                             Map<String, Object> map){
-        if(!StringUtils.isEmpty(userId)){
+                              Map<String, Object> map) {
+        if (!StringUtils.isEmpty(userId)) {
             UserInfoDTO userInfoDTO = userInfoService.findOne(userId);
             map.put("userInfoDTO", userInfoDTO);
-        }else{
+        } else {
             UserInfoDTO userInfoDTO = new UserInfoDTO();
             map.put("userInfoDTO", userInfoDTO);
         }
@@ -126,6 +129,7 @@ public class UserInfoController {
 
     /**
      * 保存/更新帐号详情
+     *
      * @param form
      * @param bindingResult
      * @param map
@@ -134,8 +138,8 @@ public class UserInfoController {
     @PostMapping("/save")
     public ModelAndView save(@Valid AdminForm form,
                              BindingResult bindingResult,
-                             Map<String, Object> map){
-        if(bindingResult.hasErrors()){
+                             Map<String, Object> map) {
+        if (bindingResult.hasErrors()) {
             map.put("userInfoDTO", form);
             map.put("msg", bindingResult.getFieldError().getDefaultMessage());
             map.put("url", "/sell/user/index");
@@ -143,10 +147,11 @@ public class UserInfoController {
         }
 
         UserInfoDTO userInfoDTO = new UserInfoDTO();
+
         try {
-            if (!StringUtils.isEmpty(form.getUserId())){
+            if (!StringUtils.isEmpty(form.getUserId())) {
                 userInfoDTO = userInfoService.findOne(form.getUserId());
-            }else {
+            } else {
                 form.setUserId(KeyUtil.genUniqueKey());
                 userInfoDTO.setUserId(form.getUserId());
                 userInfoDTO.setAccountType("1");
@@ -166,37 +171,4 @@ public class UserInfoController {
         map.put("url", "/sell/user/list");
         return new ModelAndView("common/success", map);
     }
-
-    @PostMapping("/register")
-    public ModelAndView register(@Valid UserForm form,
-                             BindingResult bindingResult,
-                             Map<String, Object> map){
-        if(bindingResult.hasErrors()){
-            map.put("msg", bindingResult.getFieldError().getDefaultMessage());
-            map.put("url", "/sell/user/index");
-            return new ModelAndView("common/error", map);
-        }
-        UserInfoDTO userInfoDTO = new UserInfoDTO();
-        try {
-            userInfoDTO = userInfoService.findOneByPhone(form.getUserPhone());
-            if (userInfoDTO != null){
-                map.put("msg", "帐号已存在，请登录");
-                map.put("url", "/sell/user/index");
-                return new ModelAndView("common/error", map);
-            }else {
-                BeanUtils.copyProperties(form, userInfoDTO);
-                userInfoDTO.setUserId(KeyUtil.genUniqueKey());
-                userInfoDTO.setOpenid("0000000000");
-                userInfoDTO.setAccountStatus(AccountStatusEnum.NORMAL.getCode());
-                userInfoService.save(userInfoDTO);
-            }
-        } catch (SellException e) {
-            map.put("msg", e.getMessage());
-            map.put("url", "/sell/user/index");
-            return new ModelAndView("common/error", map);
-        }
-        map.put("url", "/sell/user/list");
-        return new ModelAndView("common/success", map);
-    }
-
 }

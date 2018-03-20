@@ -26,6 +26,7 @@ import java.util.Map;
 /**
  * Created by a4420 on 17/12/10.
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/buyer/order")
 @Slf4j
@@ -85,7 +86,7 @@ public class BuyerOrderController {
     }
 
     //取消订单
-    @PostMapping("/cancel")
+    @GetMapping("/cancel")
     public ResultVO cancel(@RequestParam("userId") String userId,
                            @RequestParam("orderId") String orderId) {
         buyerService.cancelOrder(userId, orderId);

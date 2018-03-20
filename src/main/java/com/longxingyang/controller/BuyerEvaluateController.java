@@ -27,6 +27,7 @@ import java.util.Map;
 /**
  * Created by a4420 on 18/02/09.
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/buyer/evaluate")
 @Slf4j
@@ -52,7 +53,7 @@ public class BuyerEvaluateController {
         EvaluateDTO createResult = evaluateService.create(evaluateDTO);
 
         Map<String, String> map = new HashMap<>();
-        map.put("evaluateId", createResult.getEvaluateId());
+        map.put("UserId", createResult.getUserId());
 
         return ResultVOUtils.success(map);
     }

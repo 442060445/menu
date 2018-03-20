@@ -14,7 +14,7 @@ public class UserInfo2UserInfoDTOConverter {
 
     public static UserInfoDTO convert(UserInfo userInfo){
         UserInfoDTO userInfoDTO = new UserInfoDTO();
-        BeanUtils.copyProperties(userInfo, userInfoDTO, new String[]{"password"});
+        BeanUtils.copyProperties(userInfo, userInfoDTO);
         return userInfoDTO;
     }
 
