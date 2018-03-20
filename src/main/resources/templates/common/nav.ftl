@@ -48,7 +48,7 @@
             </ul>
         </li>
 
-        <li class="dropdown">
+<#--        <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i
                     class="fa fa-fw fa-plus"></i> 排队管理 <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -57,10 +57,10 @@
                 <li><a href="#">大桌</a></li>
                 <li><a href="#">小桌</a></li>
             </ul>
-        </li>
+        </li>-->
 
         <li>
-            <a href="/sell/seller/logout"><i class="fa fa-fw fa-list-alt"></i> 登出</a>
+            <a href="/sell/logout"><i class="fa fa-fw fa-list-alt"></i> 登出</a>
         </li>
     </ul>
 </nav>

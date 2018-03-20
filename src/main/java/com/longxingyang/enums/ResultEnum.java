@@ -30,27 +30,27 @@ public enum ResultEnum {
 
     ORDER_OWNER_ERROR(19, "该订单不属于当前用户"),
 
-    WECHAT_MP_ERROR(20, "微信公众账号方面错误"),
+    ORDER_CANCEL_SUCCESS(20, "订单取消成功"),
 
-    WXPAY_NOTIFY_MONEY_VERIFY_ERROR(21, "微信支付异步通知金额校验不通过"),
+    ORDER_FINISH_SUCCESS(21, "订单完结成功"),
 
-    ORDER_CANCEL_SUCCESS(22, "订单取消成功"),
+    PRODUCT_STATUS_ERROR(22, "商品状态不正确"),
 
-    ORDER_FINISH_SUCCESS(23, "订单完结成功"),
+    LOGIN_FAIL(23, "登录失败, 登录信息不正确"),
 
-    PRODUCT_STATUS_ERROR(24, "商品状态不正确"),
+    LOGOUT_SUCCESS(24, "登出成功"),
 
-    LOGIN_FAIL(25, "登录失败, 登录信息不正确"),
+    PRODUCT_UPDATE_SUCCESS(25, "商品状态更新成功"),
 
-    LOGOUT_SUCCESS(26, "登出成功"),
+    ACCOUNT_STATUS_ERROR(26, "帐号状态异常"),
 
-    PRODUCT_UPDATE_SUCCESS(27, "商品状态更新成功"),
+    ACCOUNT_UPDATE_FAIL(27, "帐号更新失败"),
 
-    ACCOUNT_STATUS_ERROR(28, "帐号状态异常"),
+    ACCOUNT_UPDATE_SUCCESS(28, "帐号更新成功"),
 
-    ACCOUNT_UPDATE_FAIL(29, "帐号更新失败"),
+    LOGIN_SUCCESS(29, "登陆成功"),
 
-    ACCOUNT_UPDATE_SUCCESS(30, "帐号更新成功")
+    NO_RIGHT(29, "非管理员帐号不能登录")
     ;
 
     private Integer code;

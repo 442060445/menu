@@ -21,7 +21,6 @@
                             <th>评价</th>
                             <th>创建时间</th>
                             <th>修改时间</th>
-                            <th colspan="2">操作</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -34,10 +33,6 @@
                             <td>${EcaluateDTO.content}</td>
                             <td>${EcaluateDTO.createTime}</td>
                             <td>${EcaluateDTO.updateTime}</td>
-                            <td><a href="">详情</a></td>
-                            <td>
-                                <a href="">修改</a>
-                            </td>
                         </tr>
                         </#list>
                         </tbody>
@@ -50,21 +45,21 @@
                     <#if currentPage lte 1>
                         <li class="disabled"><a href="#">上一页</a></li>
                     <#else>
-                        <li><a href="/sell/seller/order/list?page=${currentPage - 1}&size=${size}">上一页</a></li>
+                        <li><a href="/sell/evaluate/list?page=${currentPage - 1}&size=${size}">上一页</a></li>
                     </#if>
 
                     <#list 1..EvaluateDTOPage.getTotalPages() as index>
                         <#if currentPage == index>
                             <li class="disabled"><a href="#">${index}</a></li>
                         <#else>
-                            <li><a href="/sell/seller/evaluate/list?page=${index}&size=${size}">${index}</a></li>
+                            <li><a href="/sell/evaluate/list?page=${index}&size=${size}">${index}</a></li>
                         </#if>
                     </#list>
 
                     <#if currentPage gte EvaluateDTOPage.getTotalPages()>
                         <li class="disabled"><a href="#">下一页</a></li>
                     <#else>
-                        <li><a href="/sell/seller/evaluate/list?page=${currentPage + 1}&size=${size}">下一页</a></li>
+                        <li><a href="/sell/evaluate/list?page=${currentPage + 1}&size=${size}">下一页</a></li>
                     </#if>
                     </ul>
                 </div>

@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebMvcConfigurerAdapter{
 
         registry.addInterceptor(new SecurityInterceptor())
                 .addPathPatterns("/seller/**","/user/**")
-                .excludePathPatterns("/loginPost","/sell/login.html");
+                .excludePathPatterns("/loginPost","/sell/login.html","/loginPost2");
 
 /*        // 排除配置
         addInterceptor.excludePathPatterns("/sell/seller/order*//**");
