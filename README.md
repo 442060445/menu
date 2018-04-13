@@ -1,51 +1,63 @@
 # menu
-
-练习项目
-
 # API
-测试
-###商品列表
 
+###商品列表
 ```
 GET /sell/buyer/product/list
 ```
-
 参数
-
 ```
 无
 ```
-
 返回
-
 ```
 {
     "code": 0,
     "msg": "成功",
     "data": [
         {
-            "name": "热榜",
+            "name": "推荐",
             "type": 1,
+            "foods": [
+                {
+                    "id": "000012",
+                    "name": "澳洲牛扒",
+                    "price": 68,
+                    "description": "这是一份澳洲牛扒",
+                    "icon": "http://192.168.56.102:8877/images/niupa.jpg",
+                }
+                ｛
+                    "id": "000013",
+                    "name": "意大利黑椒牛扒",
+                    "price": 56,
+                    "description": "这是一份意大利黑椒牛扒",
+                    "icon": "http://192.168.56.102:8877/images/niupa.jpg",
+                ｝
+            ]
+        },
+        {
+            "name": "热卖",
+            "type": 2,
             "foods": [
                 {
                     "id": "123456",
                     "name": "皮蛋粥",
-                    "price": 1.2,
-                    "description": "好吃的皮蛋粥",
-                    "icon": "http://xxx.com",
+                    "price": 5.5,
+                    "description": "这是一碗皮蛋粥",
+                    "icon": "http://192.168.56.102:8877/images/pidanzhou.jpg",
                 }
             ]
-        },
+        }
         {
-            "name": "好吃的",
-            "type": 2,
+            "name": "主食",
+            "type": 3,
             "foods": [
                 {
-                    "id": "123457",
-                    "name": "慕斯蛋糕",
-                    "price": 10.9,
-                    "description": "美味爽口",
-                    "icon": "http://xxx.com",
+                    "id": "000002",
+                    "name": "米饭",
+                    "price": 1,
+                    "description": "这是一碗米饭",
+                    "icon": "http://192.168.56.102:8877/images/mifan.jpg",
                 }
             ]
         }
@@ -55,190 +67,152 @@ GET /sell/buyer/product/list
 
 
 ###创建订单
-
 ```
 POST /sell/buyer/order/create
 ```
-
 参数
+```
+name: "顾客注册测试1"//用户姓名
+userId: "152353020857181050"//用户ID
+phone: "13798957775"//用户手机
+desknum: "10" //桌号
+items: [//商品列表
+    {   
+        productId:"123456",
+        productQuantity:3
+    },
+    {   
+        productId:"000001",
+        productQuantity:1
+    },
+    {   
+        productId:"000002",
+        productQuantity:2
+    }
+]
 
 ```
-name: "张三"
-phone: "18868822111"
-address: "慕课网总部"
-openid: "ew3euwhd7sjw9diwkq" //用户的微信openid
-items: [{
-    productId: "1423113435324",
-    productQuantity: 2 //购买数量
-}]
-
-```
-
 返回
-
 ```
 {
   "code": 0,
   "msg": "成功",
   "data": {
-      "orderId": "147283992738221" 
+      "orderId": "1523611023729531562" 
   }
 }
+
+
 ```
-
 ###订单列表
-
 ```
 GET /sell/buyer/order/list
 ```
-
 参数
-
 ```
-openid: 18eu2jwk2kse3r42e2e
+userId: 152353020857181050
 page: 0 //从第0页开始
-size: 10
+size: 10//每页10项
 ```
-
 返回
-
 ```
 {
-  "code": 0,
-  "msg": "成功",
-  "data": [
-    {
-      "orderId": "161873371171128075",
-      "buyerName": "张三",
-      "buyerPhone": "18868877111",
-      "buyerAddress": "慕课网总部",
-      "buyerOpenid": "18eu2jwk2kse3r42e2e",
-      "orderAmount": 0,
-      "orderStatus": 0,
-      "payStatus": 0,
-      "createTime": 1490171219,
-      "updateTime": 1490171219,
-      "orderDetailList": null
-    },
-    {
-      "orderId": "161873371171128076",
-      "buyerName": "张三",
-      "buyerPhone": "18868877111",
-      "buyerAddress": "慕课网总部",
-      "buyerOpenid": "18eu2jwk2kse3r42e2e",
-      "orderAmount": 0,
-      "orderStatus": 0,
-      "payStatus": 0,
-      "createTime": 1490171219,
-      "updateTime": 1490171219,
-      "orderDetailList": null
-    }]
+    "code": 0,
+    "msg": "成功",
+    "data": [
+        {
+            "orderId": "1523611023729531562",
+            "username": "顾客注册测试1",
+            "userId": "152353020857181050",
+            "desknum": "10",
+            "orderAmount": 33.5,
+            "orderStatus": 0,
+            "payStatus": 0,
+            "createTime": 1523611022,
+            "updateTime": 1523611022
+        }
+    ]
 }
+
+
 ```
-
 ###查询订单详情
-
 ```
 GET /sell/buyer/order/detail
 ```
-
 参数
-
 ```
-openid: 18eu2jwk2kse3r42e2e
-orderId: 161899085773669363
+userId: 152353020857181050
+orderId: 1523611023729531562
 ```
-
 返回
-
 ```
 {
     "code": 0,
     "msg": "成功",
     "data": {
-          "orderId": "161899085773669363",
-          "buyerName": "李四",
-          "buyerPhone": "18868877111",
-          "buyerAddress": "慕课网总部",
-          "buyerOpenid": "18eu2jwk2kse3r42e2e",
-          "orderAmount": 18,
-          "orderStatus": 0,
-          "payStatus": 0,
-          "createTime": 1490177352,
-          "updateTime": 1490177352,
-          "orderDetailList": [
+        "orderId": "1523611023729531562",
+        "username": "顾客注册测试1",
+        "userId": "152353020857181050",
+        "desknum": "10",
+        "orderAmount": 33.5,
+        "orderStatus": 0,
+        "payStatus": 0,
+        "createTime": 1523611022,
+        "updateTime": 1523611022,
+        "orderDetailList": [
             {
-                "detailId": "161899085974995851",
-                "orderId": "161899085773669363",
-                "productId": "157875196362360019",
-                "productName": "招牌奶茶",
-                "productPrice": 9,
+                "detailId": "1523611023730198373",
+                "orderId": "1523611023729531562",
+                "productId": "123456",
+                "productName": "皮蛋粥",
+                "productPrice": 5.5,
+                "productQuantity": 3,
+                "productIcon": "http://192.168.56.102:8877/images/pidanzhou.jpg",
+                "createTime": 1516697269000,
+                "updateTime": 1523609300000
+            },
+            {
+                "detailId": "1523611023732273719",
+                "orderId": "1523611023729531562",
+                "productId": "000001",
+                "productName": "牛肉套餐",
+                "productPrice": 15,
+                "productQuantity": 1,
+                "productIcon": "http://192.168.56.102:8877/images/2.jpg",
+                "createTime": 1516697333000,
+                "updateTime": 1523604969000
+            },
+            {
+                "detailId": "1523611023734751578",
+                "orderId": "1523611023729531562",
+                "productId": "000002",
+                "productName": "米饭",
+                "productPrice": 1,
                 "productQuantity": 2,
-                "productIcon": "http://xxx.com",
-                "productImage": "http://xxx.com"
+                "productIcon": "http://192.168.56.102:8877/images/mifan.jpg",
+                "createTime": 1516697444000,
+                "updateTime": 1523609300000
             }
         ]
     }
 }
 ```
 
+
 ###取消订单
-
 ```
-POST /sell/buyer/order/cancel
+GET /sell/buyer/order/cancel
 ```
-
 参数
-
 ```
-openid: 18eu2jwk2kse3r42e2e
-orderId: 161899085773669363
+userId: 152353020857181050
+orderId: 1523611023729531562
 ```
-
 返回
-
 ```
 {
     "code": 0,
-    "msg": "成功",
-    "data": null
+    "msg": "成功"
 }
 ```
-
-###获取openid
-
-```
-重定向到 /sell/wechat/authorize
-```
-
-参数
-
-```
-returnUrl: http://xxx.com/abc  //【必填】
-```
-
-返回
-
-```
-http://xxx.com/abc?openid=oZxSYw5ldcxv6H0EU67GgSXOUrVg
-```
-
-###支付订单
-```
-重定向 /sell/pay/create
-```
-
-参数
-
-```
-orderId: 161899085773669363
-returnUrl: http://xxx.com/abc/order/161899085773669363
-```
-
-返回
-
-```
-http://xxx.com/abc/order/161899085773669363
-```
-
-
