@@ -104,7 +104,7 @@ items: [//商品列表
 
 
 ```
-###订单列表
+###查询订单列表
 ```
 GET /sell/buyer/order/list
 ```
@@ -216,3 +216,54 @@ orderId: 1523611023729531562
     "msg": "成功"
 }
 ```
+
+###创建评价
+```
+POST /sell/buyer/evaluate/create
+```
+参数
+```
+userId: 152353020857181050
+username：顾客注册测试1
+rating: 1523611023729531562
+content：5星好评
+```
+返回
+```
+{
+    "code": 0,
+    "msg": "成功",
+    "data": {
+        "UserId": "152353020857181050"
+    }
+}
+```
+
+
+###评价记录
+```
+GET /sell/buyer/evaluate/list
+```
+参数
+```
+userId: 152353020857181050
+```
+返回
+```
+{
+    "code": 0,
+    "msg": "成功",
+    "data": [
+        {
+            "evaluateId": "1523612266863463085",
+            "userId": "152353020857181050",
+            "username": "顾客注册测试1",
+            "rating": 5,
+            "content": "5星好评",
+            "createTime": 1523612265,
+            "updateTime": 1523612265
+        }
+    ]
+}
+```
+
